@@ -142,7 +142,9 @@ body {
     outline: none;
     box-shadow: 2px 2px 2px rgba(20, 20, 20,0.5);
 }
-
+#new-btn:active{
+    transform: scale(0.9);
+}
 
 @media only screen and (max-width: 500px){
     .book-add{

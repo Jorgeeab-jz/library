@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sanchez&family=Staatliches&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <header>
+        <h1>Welcome to my library</h1>
+        <h2>Feel free to add or delete any book</h2>
+    </header>
+    <div class="modal" id="modal">
+        <div class="book-add">
+            <h2>Wich book will you add?</h2>
+            <h4>Title</h4>
+            <div class="text-input-container">
+                <input class="text-input" id="book-title" type="text">
+            </div>
+            <h4>Author</h4>
+            <div class="text-input-container">
+                <input class="text-input" id="book-author" type="text">
+            </div>
+            <h4>Number of pages</h4>
+            <div class="text-input-container">
+                <input class="text-input" id="book-pages" type="number">
+            </div>
+            <div class="read-select">
+                <h2>Have you read it?</h2>
+                <div class="selection">
+                    <div class="yes-select">
+                        <input type="radio" name="read" id="yes">
+                        <label for="yes">Yes</label>
+                    </div>
+                    <div class="no-select">
+                        <input type="radio" name="read" id="no">
+                        <label for="no">No</label>
+                    </div>
+                </div>
+                <button id="book-submit">Submit</button>
+            </div>
+        </div>
+    </div>
+    <div class="new-book">
+        <button id="new-btn">+</button>
+    </div>
+</body>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-database.js"></script>
+<script src="script.js"></script>
+</html>

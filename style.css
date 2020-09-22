@@ -20,7 +20,6 @@ body {
     color: white;
 }
 .top h1,h2{
-    position: relative;
     margin: auto;
     text-align: center;
 }
@@ -123,8 +122,9 @@ body {
 .new-book{
     position: fixed;
     padding: 0%;
-    bottom: 8vh;
-    right: 6vw;
+    top: 80%;
+    right: 2vw;
+    
     margin: auto;
 }
 #new-btn{
@@ -146,6 +146,23 @@ body {
     transform: scale(0.9);
 }
 
+.book-container{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    position: relative;
+    top: 6em;
+    margin: auto;
+    width: 95vw;
+    height: 100%;
+    border: 1px solid blue;
+}
+.book {
+    margin: auto;
+    width: 250px;
+    height: 350px;
+    border: 1px solid red;
+    border-radius: 20px;
+}
 @media only screen and (max-width: 500px){
     .book-add{
         width: 70vw;
@@ -166,5 +183,8 @@ body {
     }
     .top h2{
         font-size: 1.0em;
+    }
+    .book-container{
+        display: inline;
     }
 }

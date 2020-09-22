@@ -12,6 +12,7 @@ firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 const dbLibrary = firebase.database();
 const booksStorage = dbLibrary.ref().child('books');
+const dbTest = dbLibrary.ref().child('books/1');
 /////////////////////////////////////////////////////////////////////
 let fullLibrary = [];
 let newBook;
@@ -36,6 +37,7 @@ const defaultLibrary = [
     }
 ];
 const modal = document.getElementById('modal');
+const sumbitBtn = document.getElementById('book-submit');
 const titleInput = document.getElementById('book-title');
 const authorInput = document.getElementById('book-author');
 const pagesNumber = document.getElementById('book-pages');
@@ -49,33 +51,62 @@ class Book {
         this.author = author;
         this.pages = pages;
         this.read = read;
+        this.id = id
     }
 }
 
 function getNewBook(){
     if(titleInput.value  == '' || authorInput.value == '' || pagesNumber.value == '' ) {
         alert('Please fill the required info before submitting your book.');
-        return;
+        return false;
+    }else{
+        let title = titleInput.value;
+        let author = authorInput.value;
+        let pages = pagesNumber.value;
+        let read = readCheck.checked;
+        newBook = new Book(title,author,pages,read);
+        return true;
     }
 }
 
+function clearInput(){
+    titleInput.value = '';
+    authorInput.value = '';
+    pagesNumber.value = '';
+}
+
 function addBookToLib(){
-    
+    getNewBook();
+    if(getNewBook){
+        booksStorage.once('value', snap => {
+            if(snap.exists() == false){
+                booksStorage.set(defaultLibrary);
+                fullLibrary = defaultLibrary;
+            }else{
+                fullLibrary = snap.val();
+                let libUpdate = fullLibrary.push(newBook);
+                booksStorage.set(fullLibrary);
+            }
+        })
+        clearInput();
+    }
+}
+
+function deleteBook(bookID){
+    fullLibrary.splice(bookID,1);
+    booksStorage.set(fullLibrary);
+}
+
+function syncLibrary(){
     booksStorage.once('value', snap => {
         if(snap.exists() == false){
             booksStorage.set(defaultLibrary);
             fullLibrary = defaultLibrary;
         }else{
             fullLibrary = snap.val();
-            let libUpdate = fullLibrary.push(newBook);
-            booksStorage.set(fullLibrary);
         }
     })
 }
-
-
-
-
 
 
 
@@ -89,3 +120,5 @@ document.addEventListener('click', (e)=>{
         modal.style.display = 'none';
     }
 })
+
+sumbitBtn.addEventListener('click', addBookToLib);

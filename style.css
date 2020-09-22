@@ -56,8 +56,8 @@ body {
     padding-top: 100px; 
     left: 0;
     top: 0;
-    width: 100%; 
-    height: 100%; 
+    width: 100vw; 
+    height: 100vw; 
     overflow: auto; 
     background-color: rgb(0,0,0); 
     background-color: rgba(0,0,0,0.4);
@@ -244,7 +244,7 @@ body {
 .book button:active{
     transform: scale(0.95);
 }
-@media only screen and (max-width: 500px){
+@media only screen and (max-width: 600px){
     .book-add{
         width: 70vw;
         height: 400px;
@@ -262,14 +262,16 @@ body {
         right: 2vw;
     }
     .top{
-        margin-top: 0%;
+        width: 100vw;
     }
     .top h1{
         font-size: 1.6em;
         margin-top: 10px;
+        width: 100%;
     }
     .top h2{
         font-size: 1.0em;
+        width: 100%;
     }
     .book-container{
         grid-template-columns: none;

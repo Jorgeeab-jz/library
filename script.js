@@ -10,7 +10,6 @@ const firebaseConfig = {
     measurementId: "G-NT1Z1MYNN3"
 };
 firebase.initializeApp(firebaseConfig);
-firebase.analytics();
 const dbLibrary = firebase.database();
 const booksStorage = dbLibrary.ref().child('books');
 /////////////////////////////////////////////////////////////////////
